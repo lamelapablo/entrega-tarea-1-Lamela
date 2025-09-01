@@ -1,5 +1,5 @@
 import Card from "@/components/Card";
-import { COLORS } from "@/constants/colors";
+import { COLORS } from "@/constants/Colors";
 import { Stack } from "expo-router";
 import { StyleSheet, View } from "react-native";
 
