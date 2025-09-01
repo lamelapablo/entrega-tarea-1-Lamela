@@ -1,50 +1,72 @@
-# Welcome to your Expo app 👋
+# Tarea 1 (Cards)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native app built with Expo that demonstrates interactive card components with color transitions.
 
-## Get started
+## Features
 
-1. Install dependencies
+- Interactive cards with press feedback
+- Color transitions on press
+- Responsive layout
+- Custom styling with dynamic color palette
 
+## Getting Started
+
+### Prerequisites
+
+- Node.js (LTS version)
+- npm or yarn
+- Expo CLI
+
+### Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/lamelapablo/entrega-tarea-1-Lamela.git
+   ```
+
+2. Install dependencies
    ```bash
    npm install
    ```
 
-2. Start the app
-
+3. Start the development server
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+## Project Structure
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+tarea1/
+├── app/                    # Application routes
+│   ├── _layout.tsx        # Root layout component
+│   └── index.tsx          # Main screen
+├── components/            
+│   └── Card.tsx           # Reusable card component
+├── constants/
+│   └── colors.ts          # Color palette definitions
+└── package.json
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Color Palette
 
-## Learn more
+The application uses a custom color scheme defined in `constants/colors.ts`:
 
-To learn more about developing your project with Expo, look at the following resources:
+- Green (`#4A9782`): Primary card color
+- Dark Green (`#004030`): Press state color
+- Beige (`#DCD0A8`): Default text color
+- White (`#FFF`): Press state text color
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Development
 
-## Join the community
+To modify the cards:
 
-Join our community of developers creating universal apps.
+1. Navigate to `components/Card.tsx`
+2. Adjust the styles in the `StyleSheet` object
+3. Modify the press behavior in the `Pressable` component
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Built With
+
+- [React Native](https://reactnative.dev/)
+- [Expo](https://expo.dev/)
+- [Expo Router](https://expo.github.io/router/docs/)
