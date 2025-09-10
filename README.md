@@ -1,13 +1,14 @@
-# Tarea 1 (Cards)
+# Tarea 2 (Navigation)
 
-A React Native app built with Expo that demonstrates interactive card components with color transitions.
+A React Native app built with Expo that demonstrates navigation patterns using expo-router. This project focuses on configuring bottom tabs and screen headers.
 
 ## Features
 
-- Interactive cards with press feedback
-- Color transitions on press
-- Responsive layout
-- Custom styling with dynamic color palette
+- Bottom Tab Navigation (expo-router / react-navigation)
+- Header titles and custom tab labels (title / headerTitle vs tabBarLabel)
+- Tab icons with color and size provided by the navigator
+- Modal on Profile screen for editing user name
+- Reusable UI components (Card, Button) and centralized color constants
 
 ## Getting Started
 
@@ -37,36 +38,17 @@ A React Native app built with Expo that demonstrates interactive card components
 ## Project Structure
 
 ```
-tarea1/
-├── app/                    # Application routes
-│   ├── _layout.tsx        # Root layout component
-│   └── index.tsx          # Main screen
-├── components/            
-│   └── Card.tsx           # Reusable card component
+entrega-tarea-1-Lamela/
+├── app/
+│   ├── _layout.tsx        # Tabs setup and shared screenOptions (tab icons, colors, header style)
+│   ├── index.tsx          # Main screen (cards)
+│   ├── counter.tsx        # Counter screen
+│   └── profile.tsx        # Profile screen (modal)
+├── components/
+│   ├── Card.tsx
+│   └── Button.tsx
 ├── constants/
-│   └── colors.ts          # Color palette definitions
-└── package.json
+│   └── Colors.ts
+├── package.json
+└── README.md
 ```
-
-## Color Palette
-
-The application uses a custom color scheme defined in `constants/colors.ts`:
-
-- Green (`#4A9782`): Primary card color
-- Dark Green (`#004030`): Press state color
-- Beige (`#DCD0A8`): Default text color
-- White (`#FFF`): Press state text color
-
-## Development
-
-To modify the cards:
-
-1. Navigate to `components/Card.tsx`
-2. Adjust the styles in the `StyleSheet` object
-3. Modify the press behavior in the `Pressable` component
-
-## Built With
-
-- [React Native](https://reactnative.dev/)
-- [Expo](https://expo.dev/)
-- [Expo Router](https://expo.github.io/router/docs/)

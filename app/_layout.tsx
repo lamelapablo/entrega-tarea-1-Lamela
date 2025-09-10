@@ -1,5 +1,33 @@
-import { Stack } from "expo-router";
+import { COLORS } from '@/constants/Colors';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { Tabs } from "expo-router";
 
 export default function RootLayout() {
-  return <Stack />;
+  return (
+    <Tabs screenOptions={{
+      tabBarActiveTintColor: COLORS.darkGreen,
+      tabBarInactiveTintColor: COLORS.grey,
+      headerStyle: {
+        backgroundColor: COLORS.darkGreen,
+      },
+      headerTintColor: COLORS.white
+    }}>
+      <Tabs.Screen name="index" options={{
+        title: "Cards",
+        tabBarLabel: "cards",
+        tabBarIcon: ({size, color}) => <MaterialCommunityIcons name="cards" color={color} size={size} /> 
+      }} />
+      <Tabs.Screen name="counter" options={{
+        title: "Counter",
+        tabBarLabel: "counter",
+        tabBarIcon: ({size, color}) => <MaterialCommunityIcons name="counter" color={color} size={size} /> 
+      }} />
+      <Tabs.Screen name="profile" options={{
+        title: "Profile",
+        tabBarLabel: "profile",
+        tabBarIcon: ({size, color}) => <FontAwesome name="user" color={color} size={size} /> 
+      }} />
+    </Tabs>
+  );
 }
