@@ -40,7 +40,6 @@ export default function ProductCard({product}:{product: Product}) {
         <Image style={styles.image} source={resolveImageSource(product.img)} />
       </Pressable>
 
-      
       <ProductModal product={product} visible={productModalVisible} onClose={closeProductModal} />
     </>
   );
