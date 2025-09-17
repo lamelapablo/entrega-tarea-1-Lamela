@@ -1,18 +1,15 @@
 import { COLORS } from '@/constants/Colors';
 import { Product } from '@/types/product.type';
+import { resolveImageSource } from '@/utils/utilities';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Image } from 'expo-image';
 import React, { useState } from 'react';
-import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
-import Button from './Button';
-
-type ResizeMode = "cover" | "contain" | "stretch";
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import ProductModal from './ProductModal';
 
 export default function ProductCard({product}:{product: Product}) {
   
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const [productModalVisible, setProductModalVisible] = useState<boolean>(false);
-  const [imageResizeMode, setImageResizeMode] = useState<ResizeMode>("contain");
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
@@ -34,43 +31,17 @@ export default function ProductCard({product}:{product: Product}) {
             <Text style={styles.productName}>{product.name}</Text>
             <Text style={styles.price}>{product.price}</Text>
           </View>
-
           {
             isFavorite ? 
               <FontAwesome name="star" size={24} color={COLORS.beige} /> : 
               <FontAwesome name="star-o" size={24} color={COLORS.beige} />
           }
-          
         </View>
-        <View style={styles.imageContainer}>
-          <Image style={styles.image} source={product.img} 
-          // contentFit={imageResizeMode} 
-          />
-        </View>
+        <Image style={styles.image} source={resolveImageSource(product.img)} />
       </Pressable>
 
-      <Modal animationType="fade"
-        transparent={true}
-        visible={productModalVisible}
-        onRequestClose={closeProductModal}
-        >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text>{product.name}</Text>
-            <Text>{product.description}</Text>
-            <View style={styles.imageContainer}>
-              <Image style={[ styles.image, {resizeMode: imageResizeMode}]} source={product.img} contentFit='cover' />
-            </View>
-            <View style={styles.buttonsContainer}>
-              <Button text='cover' width={80} onPressFunction={() => setImageResizeMode("cover")} />
-              <Button text='contain' width={80} onPressFunction={() => setImageResizeMode("contain")} />
-              <Button text='stretch' width={80} onPressFunction={() => setImageResizeMode("stretch")} />
-
-            </View>
-            <Button text='close' width={80} onPressFunction={closeProductModal} />
-          </View>
-        </View>
-      </Modal>
+      
+      <ProductModal product={product} visible={productModalVisible} onClose={closeProductModal} />
     </>
   );
 }
@@ -97,7 +68,6 @@ const styles = StyleSheet.create({
   },
 
   cardHeader: {
-    // flex: 1,
     width: "100%",
     alignItems: "center",
     justifyContent: "space-between",
@@ -110,40 +80,6 @@ const styles = StyleSheet.create({
     width: 140,
     height: 140,
     borderRadius: 10,
+    resizeMode: "contain",
   },
-
-  imageContainer: {
-    // flex: 1,
-  },
-
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  
-  modalView: {
-    width: "80%",
-    height: 340,
-    justifyContent: "space-around",
-    backgroundColor: COLORS.darkGreen,
-    borderRadius: 20,
-    padding: 10,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-
-  buttonsContainer: {
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-  }
-  
 });
