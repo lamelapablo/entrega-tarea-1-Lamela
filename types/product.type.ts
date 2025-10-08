@@ -5,3 +5,5 @@ export type Product = {
   img:         string;
   description: string;
 }
+
+export type ProductPayload = Omit<Product, 'id'>

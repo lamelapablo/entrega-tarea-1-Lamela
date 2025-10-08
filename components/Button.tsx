@@ -6,13 +6,14 @@ type ButtonProps = {
   width:            number;
   height?:          number;
   text:             string;
+  color?:            string;
   onPressFunction?: () => void;
 }
 
 export default function Button(buttonProps: ButtonProps) {
-  const { width, height = 40, text, onPressFunction } = buttonProps;
+  const { width, height = 40, text, onPressFunction, color = COLORS.green } = buttonProps;
   return (
-    <Pressable style={[styles.button, {width, height}]} onPress={onPressFunction}>
+    <Pressable style={[styles.button, {width, height, backgroundColor: color}]} onPress={onPressFunction}>
       <Text style={styles.buttonText}>{text}</Text>
     </Pressable>
   );
@@ -20,7 +21,6 @@ export default function Button(buttonProps: ButtonProps) {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: COLORS.green,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 2
